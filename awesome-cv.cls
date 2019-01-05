@@ -30,7 +30,7 @@
 \definecolor{graytext}{HTML}{5D5D5D}
 \definecolor{lighttext}{HTML}{797979}
 
-\renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
+\newcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
 
 \newcommand{\@fontdir}{fonts/}
 
@@ -102,11 +102,9 @@ BoldItalicFont=*-MediumItalic,
 \newcommand*{\name}[2]{\def\@firstname{#1}\def\@lastname{#2}}
 \newcommand*{\firstname}[1]{\def\@firstname{#1}}
 \newcommand*{\lastname}[1]{\def\@lastname{#1}}
-\newcommand*{\familyname}[1]{\def\@lastname{#1}}
-\def\@familyname{\@lastname}
 \newcommand*{\address}[1]{\def\@address{#1}}
 \newcommand*{\position}[1]{\def\@position{#1}}
-\newcommand*{\mobile}[1]{\def\@mobile{#1}}
+\newcommand*{\phone}[1]{\def\@phone{#1}}
 \newcommand*{\email}[1]{\def\@email{#1}}
 \newcommand*{\homepage}[1]{\def\@homepage{#1}}
 \newcommand*{\github}[1]{\def\@github{#1}}
@@ -119,7 +117,6 @@ BoldItalicFont=*-MediumItalic,
 \newcommand{\acvHeaderAfterPositionSkip}{.4mm}
 \newcommand{\acvHeaderAfterAddressSkip}{-.5mm}
 \newcommand{\acvHeaderIconSep}{\space}
-\newcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
 \newcommand{\acvHeaderAfterSocialSkip}{6mm}
 
 % Others
@@ -161,10 +158,10 @@ BoldItalicFont=*-MediumItalic,
     \headersocialstyle{
     \newbool{isstart}
     \setbool{isstart}{true}
-    \ifthenelse{\isundefined{\@mobile}}
+    \ifthenelse{\isundefined{\@phone}}
     {}
     {
-    \faMobile\acvHeaderIconSep\@mobile%
+    \famobile\acvHeaderIconSep\@phone%
     \setbool{isstart}{false}
     }
     \ifthenelse{\isundefined{\@email}}
