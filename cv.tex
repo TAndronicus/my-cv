@@ -1,0 +1,58 @@
+\documentclass[11pt, a4paper]{awesome-cv}
+
+\geometry{left=1.4cm, top=.8cm, right=1.4cm, bottom=1.8cm, footskip=.5cm}
+
+\definecolor{awesome}{HTML}{131A28}
+\definecolor{lighttext}{HTML}{797979}
+
+% Set false if you don't want to highlight section with awesome color
+\setbool{acvSectionColorHighlight}{false}
+
+% Separator
+\renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
+
+
+%-------------------------------------------------------------------------------
+%	PERSONAL INFORMATION
+%-------------------------------------------------------------------------------
+% Available options: circle|rectangle,edge/noedge,left/right
+\photo[rectangle]{profile.png}
+\name{Jędrzej}{Biedrzycki}
+\position{Software engineer}
+\address{pl. Grunwaldzki 16/69, 50-384 Wrocław}
+\mobile{(+48) 509 857 888}
+\email{jed.biedrzycki@gmail.com}
+\github{TAndronicus}
+\linkedin{jedrzej-biedrzycki}
+\stackoverflow{7606764}{Andronicus}
+%\homepage{www.google.com}
+
+
+\begin{document}
+
+% Print the header with above personal informations
+% Give optional argument to change alignment(C: center, L: left, R: right)
+\makecvheader
+
+% Print the footer with 3 arguments(<left>, <center>, <right>)
+% Leave any of these blank if they are not needed
+\makecvfooter
+  {\today}
+  {Jędrzej Biedrzycki~~~·~~~Curriculum Vitae}
+  {\thepage}
+
+\input{cv/education.tex}
+\input{cv/skills.tex}
+\input{cv/experience.tex}
+\input{cv/extracurricular.tex}
+\newpage
+\input{cv/honors.tex}
+\input{cv/writing.tex}
+\input{cv/interests.tex}
+
+%\vspace*{\fill}
+
+% Zgoda na przetwarzanie danych osobowych
+
+
+\end{document}
