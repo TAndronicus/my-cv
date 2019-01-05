@@ -3,49 +3,34 @@
 
 \LoadClass{article}
 
-
-% Needed to make fixed length table
 \RequirePackage{array}
-% Needed to handle list environment
 \RequirePackage{enumitem}
-% Needed to handle text alignment
 \RequirePackage{ragged2e}
-% Needed to configure page layout
 \RequirePackage{geometry}
-% Needed to make header & footer effeciently
 \RequirePackage{fancyhdr}
-% Needed to manage colors
 \RequirePackage{xcolor}
-% Needed to use \ifxetex-\else-\fi statement
 \RequirePackage{ifxetex}
-% Needed to use \if-\then-\else statement
 \RequirePackage{xifthen}
-% Needed to use a toolbox of programming tools
 \RequirePackage{etoolbox}
-% Needed to change line spacing in specific environment
 \RequirePackage{setspace}
-% Needed to manage fonts
 \RequirePackage[quiet]{fontspec}
-% To support LaTeX quoting style
 \defaultfontfeatures{Ligatures=TeX}
-% Needed to manage math fonts
 \RequirePackage{unicode-math}
-% Needed to use icons from font-awesome
-% (https://github.com/posquit0/latex-fontawesome)
 \RequirePackage{fontawesome}
 \RequirePackage[default,opentype]{sourcesanspro}
-% Needed for the photo ID
 \RequirePackage[skins]{tcolorbox}
-% Needed to deal a paragraphs
 \RequirePackage{parskip}
-% Needed to deal hyperlink
 \RequirePackage[hidelinks,unicode]{hyperref}
-\hypersetup{
-  pdftitle={},
-  pdfauthor={},
-  pdfsubject={},
-  pdfkeywords={}
-}
+
+\geometry{left=1.4cm, top=.8cm, right=1.4cm, bottom=1.8cm, footskip=.5cm}
+
+\definecolor{awesome}{HTML}{131A28}
+ \definecolor{darktext}{HTML}{414141}
+ \definecolor{text}{HTML}{333333}
+ \definecolor{graytext}{HTML}{5D5D5D}
+ \definecolor{lighttext}{HTML}{797979}
+
+\renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
 
 \newcommand{\@fontdir}{fonts/}
 
@@ -78,11 +63,7 @@
 \def\@photo{#1}
 }
 
-%-------------------------------------------------------------------------------
-%                Configuration for styles
-%-------------------------------------------------------------------------------
-% Configure styles for each CV elements
-% For fundamental structures
+% styles
 \newcommand*{\headerfirstnamestyle}[1]{{\fontsize{32pt}{1em}\headerfontlight\color{graytext} #1}}
 \newcommand*{\headerlastnamestyle}[1]{{\fontsize{32pt}{1em}\headerfont\bfseries\color{text} #1}}
 \newcommand*{\headerpositionstyle}[1]{{\fontsize{7.6pt}{1em}\bodyfont\scshape\color{awesome} #1}}
@@ -117,6 +98,7 @@
 \newcommand*{\skilltypestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
 \newcommand*{\skillsetstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\color{text} #1}}
 
+% Personal info
 \newcommand*{\name}[2]{\def\@firstname{#1}\def\@lastname{#2}}
 \newcommand*{\firstname}[1]{\def\@firstname{#1}}
 \newcommand*{\lastname}[1]{\def\@lastname{#1}}
@@ -131,10 +113,6 @@
 \newcommand*{\stackoverflow}[2]{\def\@stackoverflowid{#1}\def\@stackoverflowname{#2}}
 \newcommand*{\linkedin}[1]{\def\@linkedin{#1}}
 
-%-------------------------------------------------------------------------------
-%                Commands for extra
-%-------------------------------------------------------------------------------
-%% Define helper macros a user can change easily
 % Header
 \newcommand{\acvHeaderNameDelim}{\space}
 \newcommand{\acvHeaderAfterNameSkip}{.4mm}
@@ -148,27 +126,16 @@
 \newcommand{\acvSectionTopSkip}{3mm}
 \newcommand{\acvSectionContentTopSkip}{2.5mm}
 
-
-%-------------------------------------------------------------------------------
-%                Commands for utilities
-%-------------------------------------------------------------------------------
-% Use to align an element of tabular table
+% Arrange table
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
-% Use to draw horizontal line with specific thickness
+% Rule style
 \def\vhrulefill#1{\leavevmode\leaders\hrule\@height#1\hfill \kern\z@}
 
-% Use to execute conditional statements by checking empty string
 \newcommand*{\ifempty}[3]{\ifthenelse{\isempty{#1}}{#2}{#3}}
 
-
-%-------------------------------------------------------------------------------
-%                Commands for elements of CV structure
-%-------------------------------------------------------------------------------
-% Define a header for CV
-% Usage: \makecvheader
 \newcommand*{\makecvheader}[1][C]{
   \newcommand*{\drawphoto}{
       \newlength{\photodim}
@@ -232,13 +199,8 @@
         }
     } \\[\acvHeaderAfterSocialSkip]%
   \end{minipage}
-%  \begin{minipage}[c]{\headerphotowidth}
-%    \ifthenelse{\equal{\@photoalign}{right}}{\raggedleft\drawphoto}{}
-%  \end{minipage}
 }
 
-% Define a footer for CV
-% Usage: \makecvfooter{<left>}{<center>}{<right>}
 \newcommand*{\makecvfooter}[3]{
   \fancyfoot{}
   \fancyfoot[L]{\footerstyle{#1}}
@@ -246,8 +208,6 @@
   \fancyfoot[R]{\footerstyle{#3}}
 }
 
-% Define a section for CV
-% Usage: \cvsection{<section-title>}
 \newcommand{\cvsection}[1]{
   \vspace{\acvSectionTopSkip}
   \sectionstyle{#1}
@@ -255,8 +215,6 @@
   \color{gray}\vhrulefill{0.9pt}
 }
 
-% Define a subsection for CV
-% Usage: \cvsubsection{<subsection-title>}
 \newcommand{\cvsubsection}[1]{
   \vspace{\acvSectionContentTopSkip}
   \vspace{-3mm}
@@ -264,7 +222,6 @@
   \phantomsection
 }
 
-% Define a paragraph for CV
 \newenvironment{cvparagraph}{
   \vspace{\acvSectionContentTopSkip}
   \vspace{-3mm}
@@ -274,15 +231,13 @@
   \vspace{2mm}
 }
 
-% Define an environment for cventry
 \newenvironment{cventries}{
   \vspace{\acvSectionContentTopSkip}
   \begin{center}
 }{
   \end{center}
 }
-% Define an entry of cv information
-% Usage: \cventry{<position>}{<title>}{<location>}{<date>}{<description>}
+
 \newcommand*{\cventry}[5]{
   \vspace{-2.0mm}
   \setlength\tabcolsep{0pt}
@@ -296,14 +251,12 @@
   \end{tabular*}
 }
 
-% Define an environment for cvsubentry
 \newenvironment{cvsubentries}{
   \begin{center}
 }{
   \end{center}
 }
-% Define a subentry of cv information
-% Usage: \cvsubentry{<position>}{<title>}{<date>}{<description>}
+
 \newcommand*{\cvsubentry}[4]{
   \setlength\tabcolsep{0pt}
   \setlength{\extrarowheight}{0pt}
@@ -320,7 +273,6 @@
   \end{tabular*}
 }
 
-% Define an environment for cvhonor
 \newenvironment{cvhonors}{
   \vspace{\acvSectionContentTopSkip}
   \vspace{-2mm}
@@ -332,13 +284,11 @@
     \end{tabular*}
   \end{center}
 }
-% Define a line of cv information(honor, award or something else)
-% Usage: \cvhonor{<position>}{<title>}{<location>}{<date>}
+
 \newcommand*{\cvhonor}[4]{
   \honordatestyle{#4} & \honorpositionstyle{#1}, \honortitlestyle{#2} & \honorlocationstyle{#3} \\
 }
 
-% Define an environment for cvskill
 \newenvironment{cvskills}{
   \vspace{\acvSectionContentTopSkip}
   \vspace{-2.0mm}
@@ -350,13 +300,11 @@
     \end{tabular*}
   \end{center}
 }
-% Define a line of cv information(skill)
-% Usage: \cvskill{<type>}{<skillset>}
+
 \newcommand*{\cvskill}[2]{
 	\skilltypestyle{#1} & \skillsetstyle{#2} \\
 }
 
-% Define an environment for cvitems(for cventry)
 \newenvironment{cvitems}{
   \vspace{-4.0mm}
   \begin{justify}
