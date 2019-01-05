@@ -252,6 +252,18 @@ BoldItalicFont=*-MediumItalic,
 \end{tabular*}
 }
 
+\newenvironment{cvinterests}{
+\vspace{\acvSectionContentTopSkip}
+\vspace{-2mm}
+\setlength\tabcolsep{0pt}
+\setlength{\extrarowheight}{0pt}
+}{
+}
+
+\newcommand*{\cvinterest}[1]{
+\entrytitlestyle{#1} \\
+}
+
 \newenvironment{cvsubentries}{
 \begin{center}
 }{
