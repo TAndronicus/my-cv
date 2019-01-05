@@ -25,10 +25,10 @@
 \geometry{left=1.4cm, top=.8cm, right=1.4cm, bottom=1.8cm, footskip=.5cm}
 
 \definecolor{awesome}{HTML}{131A28}
- \definecolor{darktext}{HTML}{414141}
- \definecolor{text}{HTML}{333333}
- \definecolor{graytext}{HTML}{5D5D5D}
- \definecolor{lighttext}{HTML}{797979}
+\definecolor{darktext}{HTML}{414141}
+\definecolor{text}{HTML}{333333}
+\definecolor{graytext}{HTML}{5D5D5D}
+\definecolor{lighttext}{HTML}{797979}
 
 \renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
 
@@ -40,19 +40,19 @@
 \pagestyle{fancy}
 
 \newfontfamily\headerfont[
-  Path=\@fontdir,
-  UprightFont=*-Regular,
-  ItalicFont=*-Italic,
-  BoldFont=*-Bold,
-  BoldItalicFont=*-BoldItalic,
+Path=\@fontdir,
+UprightFont=*-Regular,
+ItalicFont=*-Italic,
+BoldFont=*-Bold,
+BoldItalicFont=*-BoldItalic,
 ]{Roboto}
 
 \newfontfamily\headerfontlight[
-  Path=\@fontdir,
-  UprightFont=*-Thin,
-  ItalicFont=*-ThinItalic,
-  BoldFont=*-Medium,
-  BoldItalicFont=*-MediumItalic,
+Path=\@fontdir,
+UprightFont=*-Thin,
+ItalicFont=*-ThinItalic,
+BoldFont=*-Medium,
+BoldItalicFont=*-MediumItalic,
 ]{Roboto}
 
 \newcommand*{\footerfont}{\sourcesanspro}
@@ -137,182 +137,183 @@
 \newcommand*{\ifempty}[3]{\ifthenelse{\isempty{#1}}{#2}{#3}}
 
 \newcommand*{\makecvheader}[1][C]{
-  \newcommand*{\drawphoto}{
-      \newlength{\photodim}
-        \setlength{\photodim}{1.8cm}
-        \def\@photoborder{darkgray}
-      \begin{tikzpicture}
-        \node[rectangle, draw=edge, line width=0.3mm, inner sep=\photodim, fill overzoom image=\@photo] () {};
-      \end{tikzpicture}
-  }
-  \newlength{\headertextwidth}
-  \newlength{\headerphotowidth}
-    \setlength{\headertextwidth}{0.76\textwidth}
-    \setlength{\headerphotowidth}{0.24\textwidth}
-  \begin{minipage}[c]{\headerphotowidth}
+\newcommand*{\drawphoto}{
+\newlength{\photodim}
+\setlength{\photodim}{1.8cm}
+\def\@photoborder{darkgray}
+\begin{tikzpicture}
+    \node[rectangle, draw=edge, line width=0.3mm, inner sep=\photodim, fill overzoom image=\@photo] () {};
+\end{tikzpicture}
+}
+\newlength{\headertextwidth}
+\newlength{\headerphotowidth}
+\setlength{\headertextwidth}{0.76\textwidth}
+\setlength{\headerphotowidth}{0.24\textwidth}
+\begin{minipage}[c]{\headerphotowidth}
     \raggedright\drawphoto
-  \end{minipage}
-  \begin{minipage}[c]{\headertextwidth}
+\end{minipage}
+\begin{minipage}[c]{\headertextwidth}
     \ifthenelse{\equal{#1}{L}}{\raggedright}{\ifthenelse{\equal{#1}{R}}{\raggedleft}{\centering}}
     \headerfirstnamestyle{\@firstname}\headerlastnamestyle{{}\acvHeaderNameDelim\@lastname}
     \\[\acvHeaderAfterNameSkip]%
     \ifthenelse{\isundefined{\@position}}{}{\headerpositionstyle{\@position\\[\acvHeaderAfterPositionSkip]}}
     \ifthenelse{\isundefined{\@address}}{}{\headeraddressstyle{\@address\\[\acvHeaderAfterAddressSkip]}}
     \headersocialstyle{
-      \newbool{isstart}
-      \setbool{isstart}{true}
-      \ifthenelse{\isundefined{\@mobile}}
-        {}
-        {
-          \faMobile\acvHeaderIconSep\@mobile%
-          \setbool{isstart}{false}
-        }
-      \ifthenelse{\isundefined{\@email}}
-        {}
-        {
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}
-          \href{mailto:\@email}{\faEnvelope\acvHeaderIconSep\@email}
-        }
-      \ifthenelse{\isundefined{\@homepage}}
-        {}
-        {
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}
-          \href{http://\@homepage}{\faHome\acvHeaderIconSep\@homepage}
-        }
-      \ifthenelse{\isundefined{\@github}}
-        {}
-        {
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}
-          \href{https://github.com/\@github}{\faGithubSquare\acvHeaderIconSep\@github}
-        }
-      \ifthenelse{\isundefined{\@stackoverflowid}}
-        {}
-        {
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}
-          \href{https://stackoverflow.com/users/\@stackoverflowid}{\faStackOverflow\acvHeaderIconSep\@stackoverflowname}
-        }
-      \ifthenelse{\isundefined{\@linkedin}}
-        {}
-        {
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}
-          \href{https://www.linkedin.com/in/\@linkedin}{\faLinkedinSquare\acvHeaderIconSep\@linkedin}
-        }
-    } \\[\acvHeaderAfterSocialSkip]%
-  \end{minipage}
+    \newbool{isstart}
+    \setbool{isstart}{true}
+    \ifthenelse{\isundefined{\@mobile}}
+    {}
+    {
+    \faMobile\acvHeaderIconSep\@mobile%
+    \setbool{isstart}{false}
+    }
+    \ifthenelse{\isundefined{\@email}}
+    {}
+    {
+    \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}
+    \href{mailto:\@email}{\faEnvelope\acvHeaderIconSep\@email}
+    }
+    \ifthenelse{\isundefined{\@homepage}}
+    {}
+    {
+    \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}
+    \href{http://\@homepage}{\faHome\acvHeaderIconSep\@homepage}
+    }
+    \ifthenelse{\isundefined{\@github}}
+    {}
+    {
+    \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}
+    \href{https://github.com/\@github}{\faGithubSquare\acvHeaderIconSep\@github}
+    }
+    \ifthenelse{\isundefined{\@stackoverflowid}}
+    {}
+    {
+    \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}
+    \href{https://stackoverflow.com/users/\@stackoverflowid}{\faStackOverflow\acvHeaderIconSep\@stackoverflowname}
+    }
+    \ifthenelse{\isundefined{\@linkedin}}
+    {}
+    {
+    \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}
+    \href{https://www.linkedin.com/in/\@linkedin}{\faLinkedinSquare\acvHeaderIconSep\@linkedin}
+    }
+    } \\[\acvHeaderAfterSocialSkip]
+    %
+\end{minipage}
 }
 
 \newcommand*{\makecvfooter}[3]{
-  \fancyfoot{}
-  \fancyfoot[L]{\footerstyle{#1}}
-  \fancyfoot[C]{\footerstyle{#2}}
-  \fancyfoot[R]{\footerstyle{#3}}
+\fancyfoot{}
+\fancyfoot[L]{\footerstyle{#1}}
+\fancyfoot[C]{\footerstyle{#2}}
+\fancyfoot[R]{\footerstyle{#3}}
 }
 
 \newcommand{\cvsection}[1]{
-  \vspace{\acvSectionTopSkip}
-  \sectionstyle{#1}
-  \phantomsection
-  \color{gray}\vhrulefill{0.9pt}
+\vspace{\acvSectionTopSkip}
+\sectionstyle{#1}
+\phantomsection
+\color{gray}\vhrulefill{0.9pt}
 }
 
 \newcommand{\cvsubsection}[1]{
-  \vspace{\acvSectionContentTopSkip}
-  \vspace{-3mm}
-  \subsectionstyle{#1}
-  \phantomsection
+\vspace{\acvSectionContentTopSkip}
+\vspace{-3mm}
+\subsectionstyle{#1}
+\phantomsection
 }
 
 \newenvironment{cvparagraph}{
-  \vspace{\acvSectionContentTopSkip}
-  \vspace{-3mm}
-  \paragraphstyle
+\vspace{\acvSectionContentTopSkip}
+\vspace{-3mm}
+\paragraphstyle
 }{
-  \par
-  \vspace{2mm}
+\par
+\vspace{2mm}
 }
 
 \newenvironment{cventries}{
-  \vspace{\acvSectionContentTopSkip}
-  \begin{center}
+\vspace{\acvSectionContentTopSkip}
+\begin{center}
 }{
-  \end{center}
+\end{center}
 }
 
 \newcommand*{\cventry}[5]{
-  \vspace{-2.0mm}
-  \setlength\tabcolsep{0pt}
-  \setlength{\extrarowheight}{0pt}
-  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
-    \ifempty{#2#3}
-      {\entrypositionstyle{#1} & \entrydatestyle{#4} \\}
-      {\entrytitlestyle{#2} & \entrylocationstyle{#3} \\
-      \entrypositionstyle{#1} & \entrydatestyle{#4} \\}
-    \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}}
-  \end{tabular*}
+\vspace{-2.0mm}
+\setlength\tabcolsep{0pt}
+\setlength{\extrarowheight}{0pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
+\ifempty{#2#3}
+{\entrypositionstyle{#1} & \entrydatestyle{#4} \\}
+{\entrytitlestyle{#2} & \entrylocationstyle{#3} \\
+\entrypositionstyle{#1} & \entrydatestyle{#4} \\}
+\multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}}
+\end{tabular*}
 }
 
 \newenvironment{cvsubentries}{
-  \begin{center}
+\begin{center}
 }{
-  \end{center}
+\end{center}
 }
 
 \newcommand*{\cvsubentry}[4]{
-  \setlength\tabcolsep{0pt}
-  \setlength{\extrarowheight}{0pt}
-  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
-    \setlength\leftskip{0.2cm}
-    \subentrytitlestyle{#2} & \ifthenelse{\equal{#1}{}}
-      {\subentrydatestyle{#3}}{}
-    \ifthenelse{\equal{#1}{}}
-      {}
-      {\subentrypositionstyle{#1} & \subentrydatestyle{#3} \\}
-    \ifthenelse{\equal{#4}{}}
-      {}
-      {\multicolumn{2}{L{17.0cm}}{\subdescriptionstyle{#4}} \\}
-  \end{tabular*}
+\setlength\tabcolsep{0pt}
+\setlength{\extrarowheight}{0pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
+\setlength\leftskip{0.2cm}
+\subentrytitlestyle{#2} & \ifthenelse{\equal{#1}{}}
+{\subentrydatestyle{#3}}{}
+\ifthenelse{\equal{#1}{}}
+{}
+{\subentrypositionstyle{#1} & \subentrydatestyle{#3} \\}
+\ifthenelse{\equal{#4}{}}
+{}
+{\multicolumn{2}{L{17.0cm}}{\subdescriptionstyle{#4}} \\}
+\end{tabular*}
 }
 
 \newenvironment{cvhonors}{
-  \vspace{\acvSectionContentTopSkip}
-  \vspace{-2mm}
-  \begin{center}
-    \setlength\tabcolsep{0pt}
-    \setlength{\extrarowheight}{0pt}
-    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} C{1.5cm} L{\textwidth - 4.0cm} R{2.5cm}}
+\vspace{\acvSectionContentTopSkip}
+\vspace{-2mm}
+\begin{center}
+\setlength\tabcolsep{0pt}
+\setlength{\extrarowheight}{0pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} C{1.5cm} L{\textwidth - 4.0cm} R{2.5cm}}
 }{
-    \end{tabular*}
-  \end{center}
+\end{tabular*}
+\end{center}
 }
 
 \newcommand*{\cvhonor}[4]{
-  \honordatestyle{#4} & \honorpositionstyle{#1}, \honortitlestyle{#2} & \honorlocationstyle{#3} \\
+\honordatestyle{#4} & \honorpositionstyle{#1}, \honortitlestyle{#2} & \honorlocationstyle{#3} \\
 }
 
 \newenvironment{cvskills}{
-  \vspace{\acvSectionContentTopSkip}
-  \vspace{-2.0mm}
-  \begin{center}
-    \setlength\tabcolsep{1ex}
-    \setlength{\extrarowheight}{0pt}
-    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} r L{\textwidth * \real{0.9}}}
+\vspace{\acvSectionContentTopSkip}
+\vspace{-2.0mm}
+\begin{center}
+\setlength\tabcolsep{1ex}
+\setlength{\extrarowheight}{0pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} r L{\textwidth * \real{0.9}}}
 }{
-    \end{tabular*}
-  \end{center}
+\end{tabular*}
+\end{center}
 }
 
 \newcommand*{\cvskill}[2]{
-	\skilltypestyle{#1} & \skillsetstyle{#2} \\
+\skilltypestyle{#1} & \skillsetstyle{#2} \\
 }
 
 \newenvironment{cvitems}{
-  \vspace{-4.0mm}
-  \begin{justify}
-  \begin{itemize}[leftmargin=2ex, nosep, noitemsep]
-    \setlength{\parskip}{0pt}
-    \renewcommand{\labelitemi}{\bullet}
+\vspace{-4.0mm}
+\begin{justify}
+\begin{itemize}[leftmargin=2ex, nosep, noitemsep]
+\setlength{\parskip}{0pt}
+\renewcommand{\labelitemi}{\bullet}
 }{
-  \end{itemize}
-  \end{justify}
-  \vspace{-4.0mm}
+\end{itemize}
+\end{justify}
+\vspace{-4.0mm}
 }
