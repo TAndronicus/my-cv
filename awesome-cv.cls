@@ -4,9 +4,6 @@
 \LoadClass{article}
 
 
-%-------------------------------------------------------------------------------
-%                3rd party packages
-%-------------------------------------------------------------------------------
 % Needed to make fixed length table
 \RequirePackage{array}
 % Needed to handle list environment
@@ -50,31 +47,11 @@
   pdfkeywords={}
 }
 
-
-%-------------------------------------------------------------------------------
-%                Configuration for directory locations
-%-------------------------------------------------------------------------------
-% Configure a directory location for fonts(default: 'fonts/')
-%\newcommand*{\fontdir}[1][fonts/]{\def\@fontdir{#1}}
-%\fontdir
-
 \newcommand{\@fontdir}{fonts/}
 
-%-------------------------------------------------------------------------------
-%                Configuration for layout
-%-------------------------------------------------------------------------------
-%% Page Layout
-% Configure page margins with geometry
-\geometry{left=2.0cm, top=1.5cm, right=2.0cm, bottom=2.0cm, footskip=.5cm}
-
-%% Header & Footer
-% Set offset to each header and footer
 \fancyhfoffset{0em}
-% Remove head rule
 \renewcommand{\headrulewidth}{0pt}
-% Clear all header & footer fields
 \fancyhf{}
-% Enable if you want to make header or footer using fancyhdr
 \pagestyle{fancy}
 
 % Boolean value to switch section color highlighting
@@ -100,6 +77,10 @@
 \newcommand*{\footerfont}{\sourcesanspro}
 \newcommand*{\bodyfont}{\sourcesanspro}
 \newcommand*{\bodyfontlight}{\sourcesansprolight}
+
+\newcommand{\photo}[1]{
+\def\@photo{#1}
+}
 
 %-------------------------------------------------------------------------------
 %                Configuration for styles
@@ -151,70 +132,18 @@
 \newcommand*{\letternamestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
 \newcommand*{\letterenclosurestyle}[1]{{\fontsize{10pt}{1em}\bodyfontlight\slshape\color{lighttext} #1}}
 
-
-%-------------------------------------------------------------------------------
-%                Commands for personal information
-%-------------------------------------------------------------------------------
-% Define photo ID
-% Usage: \photo[circle|rectangle,edge|noedge,left|right]{<path-to-image>}
-\newcommand{\photo}[2][circle,edge,left]{%
-  \def\@photo{#2}
-  \@for\tmp:=#1\do{%
-    \ifthenelse{\equal{\tmp}{circle} \or \equal{\tmp}{rectangle}}%
-      {\let\@photoshape\tmp}{}%
-    \ifthenelse{\equal{\tmp}{edge} \or \equal{\tmp}{noedge}}%
-      {\let\@photoedge\tmp}{}%
-    \ifthenelse{\equal{\tmp}{left} \or \equal{\tmp}{right}}%
-      {\let\@photoalign\tmp}{}%
-  }%
-}
-\def\@photoshape{circle}
-\def\@photoedge{edge}
-\def\@photoalign{left}
-
-% Define writer's name
-% Usage: \name{<firstname>}{<lastname>}
-% Usage: \firstname{<firstname>}
-% Usage: \lastname{<lastname>}
-% Usage: \familyname{<familyname>}
 \newcommand*{\name}[2]{\def\@firstname{#1}\def\@lastname{#2}}
 \newcommand*{\firstname}[1]{\def\@firstname{#1}}
 \newcommand*{\lastname}[1]{\def\@lastname{#1}}
 \newcommand*{\familyname}[1]{\def\@lastname{#1}}
 \def\@familyname{\@lastname}
-
-% Define writer's address
-% Usage: \address{<address>}
 \newcommand*{\address}[1]{\def\@address{#1}}
-
-% Define writer's position
-% Usage: \name{<position>}
 \newcommand*{\position}[1]{\def\@position{#1}}
-
-% Defines writer's mobile (optional)
-% Usage: \mobile{<mobile number>}
 \newcommand*{\mobile}[1]{\def\@mobile{#1}}
-
-% Defines writer's email (optional)
-% Usage: \email{<email adress>}
 \newcommand*{\email}[1]{\def\@email{#1}}
-
-% Defines writer's homepage (optional)
-% Usage: \homepage{<url>}
 \newcommand*{\homepage}[1]{\def\@homepage{#1}}
-
-% Defines writer's github (optional)
-% Usage: \github{<github-nick>}
 \newcommand*{\github}[1]{\def\@github{#1}}
-
-% Defines writer's stackoverflow profile (optional)
-% Usage: \stackoverflow{<so userid>}{<so username>}
-%   e.g.https://stackoverflow.com/users/123456/sam-smith
-%       would be \stackoverflow{123456}{sam-smith}
 \newcommand*{\stackoverflow}[2]{\def\@stackoverflowid{#1}\def\@stackoverflowname{#2}}
-
-% Defines writer's linked-in (optional)
-% Usage: \linkedin{<linked-in-nick>}
 \newcommand*{\linkedin}[1]{\def\@linkedin{#1}}
 
 %-------------------------------------------------------------------------------
@@ -256,30 +185,21 @@
 %-------------------------------------------------------------------------------
 % Define a header for CV
 % Usage: \makecvheader
-\newcommand*{\makecvheader}[1][C]{%
-  \newcommand*{\drawphoto}{%
+\newcommand*{\makecvheader}[1][C]{
+  \newcommand*{\drawphoto}{
       \newlength{\photodim}
-      \ifthenelse{\equal{\@photoshape}{circle}}%
-        {\setlength{\photodim}{1.3cm}}%
-        {\setlength{\photodim}{1.8cm}}%
-      \ifthenelse{\equal{\@photoedge}{edge}}%
-        {\def\@photoborder{darkgray}}%
-        {\def\@photoborder{none}}%
+        \setlength{\photodim}{1.8cm}
+        \def\@photoborder{darkgray}
       \begin{tikzpicture}%
-        \node[\@photoshape, draw=\@photoborder, line width=0.3mm, inner sep=\photodim, fill overzoom image=\@photo] () {};
+        \node[rectangle, draw=edge, line width=0.3mm, inner sep=\photodim, fill overzoom image=\@photo] () {};
       \end{tikzpicture}
   }
   \newlength{\headertextwidth}
   \newlength{\headerphotowidth}
-  \ifthenelse{\isundefined{\@photo}}{
-    \setlength{\headertextwidth}{\textwidth}
-    \setlength{\headerphotowidth}{0cm}
-  }{%
     \setlength{\headertextwidth}{0.76\textwidth}
     \setlength{\headerphotowidth}{0.24\textwidth}
-  }%
   \begin{minipage}[c]{\headerphotowidth}%
-    \ifthenelse{\equal{\@photoalign}{left}}{\raggedright\drawphoto}{}
+    \raggedright\drawphoto
   \end{minipage}
   \begin{minipage}[c]{\headertextwidth}
     \ifthenelse{\equal{#1}{L}}{\raggedright}{\ifthenelse{\equal{#1}{R}}{\raggedleft}{\centering}}
@@ -331,9 +251,9 @@
       {}%
       {\headerquotestyle{\@quote\\}\vspace{\acvHeaderAfterQuoteSkip}}%
   \end{minipage}%
-  \begin{minipage}[c]{\headerphotowidth}%
-    \ifthenelse{\equal{\@photoalign}{right}}{\raggedleft\drawphoto}{}
-  \end{minipage}
+%  \begin{minipage}[c]{\headerphotowidth}%
+%    \ifthenelse{\equal{\@photoalign}{right}}{\raggedleft\drawphoto}{}
+%  \end{minipage}
 }
 
 % Define a footer for CV
