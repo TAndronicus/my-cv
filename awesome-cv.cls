@@ -40,7 +40,7 @@
 \RequirePackage{parskip}
 % Needed to deal hyperlink
 \RequirePackage[hidelinks,unicode]{hyperref}
-\hypersetup{%
+\hypersetup{
   pdftitle={},
   pdfauthor={},
   pdfsubject={},
@@ -190,7 +190,7 @@
       \newlength{\photodim}
         \setlength{\photodim}{1.8cm}
         \def\@photoborder{darkgray}
-      \begin{tikzpicture}%
+      \begin{tikzpicture}
         \node[rectangle, draw=edge, line width=0.3mm, inner sep=\photodim, fill overzoom image=\@photo] () {};
       \end{tikzpicture}
   }
@@ -198,67 +198,67 @@
   \newlength{\headerphotowidth}
     \setlength{\headertextwidth}{0.76\textwidth}
     \setlength{\headerphotowidth}{0.24\textwidth}
-  \begin{minipage}[c]{\headerphotowidth}%
+  \begin{minipage}[c]{\headerphotowidth}
     \raggedright\drawphoto
   \end{minipage}
   \begin{minipage}[c]{\headertextwidth}
     \ifthenelse{\equal{#1}{L}}{\raggedright}{\ifthenelse{\equal{#1}{R}}{\raggedleft}{\centering}}
-    \headerfirstnamestyle{\@firstname}\headerlastnamestyle{{}\acvHeaderNameDelim\@lastname}%
+    \headerfirstnamestyle{\@firstname}\headerlastnamestyle{{}\acvHeaderNameDelim\@lastname}
     \\[\acvHeaderAfterNameSkip]%
-    \ifthenelse{\isundefined{\@position}}{}{\headerpositionstyle{\@position\\[\acvHeaderAfterPositionSkip]}}%
-    \ifthenelse{\isundefined{\@address}}{}{\headeraddressstyle{\@address\\[\acvHeaderAfterAddressSkip]}}%
-    \headersocialstyle{%
-      \newbool{isstart}%
-      \setbool{isstart}{true}%
-      \ifthenelse{\isundefined{\@mobile}}%
-        {}%
-        {%
+    \ifthenelse{\isundefined{\@position}}{}{\headerpositionstyle{\@position\\[\acvHeaderAfterPositionSkip]}}
+    \ifthenelse{\isundefined{\@address}}{}{\headeraddressstyle{\@address\\[\acvHeaderAfterAddressSkip]}}
+    \headersocialstyle{
+      \newbool{isstart}
+      \setbool{isstart}{true}
+      \ifthenelse{\isundefined{\@mobile}}
+        {}
+        {
           \faMobile\acvHeaderIconSep\@mobile%
-          \setbool{isstart}{false}%
-        }%
-      \ifthenelse{\isundefined{\@email}}%
-        {}%
-        {%
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{mailto:\@email}{\faEnvelope\acvHeaderIconSep\@email}%
-        }%
-      \ifthenelse{\isundefined{\@homepage}}%
-        {}%
-        {%
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{http://\@homepage}{\faHome\acvHeaderIconSep\@homepage}%
-        }%
-      \ifthenelse{\isundefined{\@github}}%
-        {}%
-        {%
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{https://github.com/\@github}{\faGithubSquare\acvHeaderIconSep\@github}%
-        }%
-      \ifthenelse{\isundefined{\@stackoverflowid}}%
-        {}%
-        {%
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{https://stackoverflow.com/users/\@stackoverflowid}{\faStackOverflow\acvHeaderIconSep\@stackoverflowname}%
-        }%
-      \ifthenelse{\isundefined{\@linkedin}}%
-        {}%
-        {%
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{https://www.linkedin.com/in/\@linkedin}{\faLinkedinSquare\acvHeaderIconSep\@linkedin}%
-        }%
+          \setbool{isstart}{false}
+        }
+      \ifthenelse{\isundefined{\@email}}
+        {}
+        {
+          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}
+          \href{mailto:\@email}{\faEnvelope\acvHeaderIconSep\@email}
+        }
+      \ifthenelse{\isundefined{\@homepage}}
+        {}
+        {
+          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}
+          \href{http://\@homepage}{\faHome\acvHeaderIconSep\@homepage}
+        }
+      \ifthenelse{\isundefined{\@github}}
+        {}
+        {
+          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}
+          \href{https://github.com/\@github}{\faGithubSquare\acvHeaderIconSep\@github}
+        }
+      \ifthenelse{\isundefined{\@stackoverflowid}}
+        {}
+        {
+          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}
+          \href{https://stackoverflow.com/users/\@stackoverflowid}{\faStackOverflow\acvHeaderIconSep\@stackoverflowname}
+        }
+      \ifthenelse{\isundefined{\@linkedin}}
+        {}
+        {
+          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}
+          \href{https://www.linkedin.com/in/\@linkedin}{\faLinkedinSquare\acvHeaderIconSep\@linkedin}
+        }
     } \\[\acvHeaderAfterSocialSkip]%
-    \ifthenelse{\isundefined{\@quote}}%
-      {}%
-      {\headerquotestyle{\@quote\\}\vspace{\acvHeaderAfterQuoteSkip}}%
-  \end{minipage}%
-%  \begin{minipage}[c]{\headerphotowidth}%
+    \ifthenelse{\isundefined{\@quote}}
+      {}
+      {\headerquotestyle{\@quote\\}\vspace{\acvHeaderAfterQuoteSkip}}
+  \end{minipage}
+%  \begin{minipage}[c]{\headerphotowidth}
 %    \ifthenelse{\equal{\@photoalign}{right}}{\raggedleft\drawphoto}{}
 %  \end{minipage}
 }
 
 % Define a footer for CV
 % Usage: \makecvfooter{<left>}{<center>}{<right>}
-\newcommand*{\makecvfooter}[3]{%
+\newcommand*{\makecvfooter}[3]{
   \fancyfoot{}
   \fancyfoot[L]{\footerstyle{#1}}
   \fancyfoot[C]{\footerstyle{#2}}
@@ -267,7 +267,7 @@
 
 % Define a section for CV
 % Usage: \cvsection{<section-title>}
-\newcommand{\cvsection}[1]{%
+\newcommand{\cvsection}[1]{
   \vspace{\acvSectionTopSkip}
   \sectionstyle{#1}
   \phantomsection
@@ -276,7 +276,7 @@
 
 % Define a subsection for CV
 % Usage: \cvsubsection{<subsection-title>}
-\newcommand{\cvsubsection}[1]{%
+\newcommand{\cvsubsection}[1]{
   \vspace{\acvSectionContentTopSkip}
   \vspace{-3mm}
   \subsectionstyle{#1}
@@ -284,25 +284,25 @@
 }
 
 % Define a paragraph for CV
-\newenvironment{cvparagraph}{%
+\newenvironment{cvparagraph}{
   \vspace{\acvSectionContentTopSkip}
   \vspace{-3mm}
   \paragraphstyle
-}{%
+}{
   \par
   \vspace{2mm}
 }
 
 % Define an environment for cventry
-\newenvironment{cventries}{%
+\newenvironment{cventries}{
   \vspace{\acvSectionContentTopSkip}
   \begin{center}
-}{%
+}{
   \end{center}
 }
 % Define an entry of cv information
 % Usage: \cventry{<position>}{<title>}{<location>}{<date>}{<description>}
-\newcommand*{\cventry}[5]{%
+\newcommand*{\cventry}[5]{
   \vspace{-2.0mm}
   \setlength\tabcolsep{0pt}
   \setlength{\extrarowheight}{0pt}
@@ -312,18 +312,18 @@
       {\entrytitlestyle{#2} & \entrylocationstyle{#3} \\
       \entrypositionstyle{#1} & \entrydatestyle{#4} \\}
     \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}}
-  \end{tabular*}%
+  \end{tabular*}
 }
 
 % Define an environment for cvsubentry
-\newenvironment{cvsubentries}{%
+\newenvironment{cvsubentries}{
   \begin{center}
-}{%
+}{
   \end{center}
 }
 % Define a subentry of cv information
 % Usage: \cvsubentry{<position>}{<title>}{<date>}{<description>}
-\newcommand*{\cvsubentry}[4]{%
+\newcommand*{\cvsubentry}[4]{
   \setlength\tabcolsep{0pt}
   \setlength{\extrarowheight}{0pt}
   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
@@ -340,49 +340,49 @@
 }
 
 % Define an environment for cvhonor
-\newenvironment{cvhonors}{%
+\newenvironment{cvhonors}{
   \vspace{\acvSectionContentTopSkip}
   \vspace{-2mm}
   \begin{center}
     \setlength\tabcolsep{0pt}
     \setlength{\extrarowheight}{0pt}
     \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} C{1.5cm} L{\textwidth - 4.0cm} R{2.5cm}}
-}{%
+}{
     \end{tabular*}
   \end{center}
 }
 % Define a line of cv information(honor, award or something else)
 % Usage: \cvhonor{<position>}{<title>}{<location>}{<date>}
-\newcommand*{\cvhonor}[4]{%
+\newcommand*{\cvhonor}[4]{
   \honordatestyle{#4} & \honorpositionstyle{#1}, \honortitlestyle{#2} & \honorlocationstyle{#3} \\
 }
 
 % Define an environment for cvskill
-\newenvironment{cvskills}{%
+\newenvironment{cvskills}{
   \vspace{\acvSectionContentTopSkip}
   \vspace{-2.0mm}
   \begin{center}
     \setlength\tabcolsep{1ex}
     \setlength{\extrarowheight}{0pt}
     \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} r L{\textwidth * \real{0.9}}}
-}{%
+}{
     \end{tabular*}
   \end{center}
 }
 % Define a line of cv information(skill)
 % Usage: \cvskill{<type>}{<skillset>}
-\newcommand*{\cvskill}[2]{%
+\newcommand*{\cvskill}[2]{
 	\skilltypestyle{#1} & \skillsetstyle{#2} \\
 }
 
 % Define an environment for cvitems(for cventry)
-\newenvironment{cvitems}{%
+\newenvironment{cvitems}{
   \vspace{-4.0mm}
   \begin{justify}
   \begin{itemize}[leftmargin=2ex, nosep, noitemsep]
     \setlength{\parskip}{0pt}
     \renewcommand{\labelitemi}{\bullet}
-}{%
+}{
   \end{itemize}
   \end{justify}
   \vspace{-4.0mm}
