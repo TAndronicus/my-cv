@@ -1,4 +1,4 @@
-\ProvidesClass{awesome-cv}
+\ProvidesClass{jb-cv}
 \NeedsTeXFormat{LaTeX2e}
 
 \LoadClass{article}
