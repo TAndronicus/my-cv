@@ -25,10 +25,10 @@
 \geometry{left=1.4cm, top=.8cm, right=1.4cm, bottom=1.8cm, footskip=.5cm}
 
 \definecolor{awesome}{HTML}{131A28}
-\definecolor{darktext}{HTML}{414141}
-\definecolor{text}{HTML}{333333}
-\definecolor{graytext}{HTML}{5D5D5D}
-\definecolor{lighttext}{HTML}{797979}
+\definecolor{darktext}{HTML}{2A2A2A}
+\definecolor{text}{HTML}{222222}
+\definecolor{graytext}{HTML}{333333}
+\definecolor{lighttext}{HTML}{555555}
 
 \newcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
 
@@ -49,8 +49,8 @@ BoldItalicFont=*-BoldItalic,
 
 \newfontfamily\headerfontlight[
 Path=\@fontdir,
-UprightFont=*-Thin,
-ItalicFont=*-ThinItalic,
+UprightFont=*-Regular,
+ItalicFont=*-Italic,
 BoldFont=*-Medium,
 BoldItalicFont=*-MediumItalic,
 ]{Roboto}
